@@ -2,12 +2,20 @@
 // routes.php
 
 require_once 'app/controllers/BooksController.php';
+require_once 'app/controllers/HomeController.php';
 //books controller
 $bookcontroller = new BooksController();
+$Homecontroller = new HomeController();
+
+
 $url = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-if ($url == '/books/index' || $url == '/') {
+
+if ($url == '/home' || $url == '/') {
+    new HomeController();
+
+}elseif ($url == '/books/index' || $url == '/') {
     $bookcontroller->index();
 } elseif ($url == '/books/create' && $requestMethod == 'GET') {
     $bookcontroller->create();
