@@ -2,12 +2,18 @@
 // routes.php
 
 require_once 'app/controllers/publiserController.php';
+require_once 'app/controllers/HomeController.php';
 
 $publisercontroller = new PubliserController();
+$Homecontroller = new HomeController();
+
 $url = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-if ($url == '/publiser/index' || $url == '/') {
+if ($url == '/home' || $url == '/') {
+    new HomeController();
+
+} elseif ($url == '/publiser/index' && $requestMethod == 'GET') {
     $publisercontroller->index();
 } elseif ($url == '/publiser/create' && $requestMethod == 'GET') {
     $publisercontroller->create();

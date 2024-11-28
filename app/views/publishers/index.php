@@ -1,35 +1,42 @@
-<!-- app/views/user/index.php -->
-<h2>Daftar Penerbit</h2>
-<a href="/publiser/create">Tambah Penerbit Baru</a><br><br>
+<?php require_once '../public/header.php'; ?>
+<?php require_once '../public/navbar.php'; ?>
 
-<table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse;">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama Penerbit</th>
-            <th>Alamat</th>
-            <th>Kontak</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (!empty($publiser)): ?>
-            <?php foreach ($publiser as $index => $publiser): ?>
-                <tr>
-                    <td><?= $index + 1 ?></td>
-                    <td><?= htmlspecialchars($publiser['nama_penerbit']) ?></td>
-                    <td><?= htmlspecialchars($publiser['alamat']) ?></td>
-                    <td><?= htmlspecialchars($publiser['kontak']) ?></td>
-                    <td>
-                        <a href="/publiser/publiser/edit/<?= $publiser['id_penerbit']; ?>">Edit</a> |
-                        <a href="/publiser/delete/<?= $publiser['id_penerbit']; ?>" onclick="return confirm('Are you sure?')">Delete</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Daftar Penerbit</h2>
+    <div class="text-center mb-4">
+        <a href="/publiser/create" class="btn btn-primary btn-sm">Tambah Penerbit Baru</a>
+    </div>
+    <table class="table table-bordered table-striped" style="max-width: 800px; margin: 0 auto;">
+        <thead class="table-dark">
             <tr>
-                <td colspan="5" style="text-align: center;">Tidak ada data penerbit.</td>
+                <th class="text-center">No</th>
+                <th>Nama Penerbit</th>
+                <th>Alamat</th>
+                <th>Kontak</th>
+                <th class="text-center">Aksi</th>
             </tr>
-        <?php endif; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php if (!empty($publiser)): ?>
+                <?php foreach ($publiser as $index => $publiser): ?>
+                    <tr>
+                        <td class="text-center"><?= $index + 1 ?></td>
+                        <td><?= htmlspecialchars($publiser['nama_penerbit']) ?></td>
+                        <td><?= htmlspecialchars($publiser['alamat']) ?></td>
+                        <td><?= htmlspecialchars($publiser['kontak']) ?></td>
+                        <td class="text-center">
+                            <a href="/publiser/publiser/edit/<?= $publiser['id_penerbit']; ?>" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/publiser/delete/<?= $publiser['id_penerbit']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="5" class="text-center">Tidak ada data penerbit.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
+<?php require_once '../public/footer.php'; ?>
