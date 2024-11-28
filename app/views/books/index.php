@@ -2,9 +2,9 @@
 <?php require_once '../public/navbar.php'; ?>
 
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Daftar Buku</h2>
+    <h2 class="text-center mb-4">Daftar Buku </h2>
     <div class="text-center mb-4">
-        <a href="/books/create" class="btn btn-primary btn-sm">Tambah Buku Baru</a>
+        <a href="/books/create" class="btn btn-primary btn-sm">Tambah Buku </a>
     </div>
     <table class="table table-bordered table-striped" style="max-width: 800px; margin: 0 auto;">
         <thead class="table-dark">
