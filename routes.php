@@ -2,12 +2,16 @@
 // routes.php
 
 require_once 'app/controllers/LoansController.php';
+require_once 'app/controllers/HomeController.php';
 
 $LoansController = new LoanController();
+$HomeController = new HomeController();
 $url = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-if ($url == '/loans/index' || $url == '/') {
+if ($url == '/home' || $url == '/') {
+    new HomeController();
+}elseif ($url == '/loans/index' || $url == '/') {
     $LoansController->index();
 } elseif ($url == '/loans/create' && $requestMethod == 'GET') {
     $LoansController->create();

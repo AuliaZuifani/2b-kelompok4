@@ -27,18 +27,19 @@ class Loan {
     }
 
     public function add($id_pinjam, $id_buku, $buku, $peminjam, $tanggal_pinjam, $tanggal_kembali) {
-        $query = $this->db->prepare(" INSERT INTO loans (id_pinjam, id_buku, buku_yang_dipinjam, peminjam, tanggal_pinjam, tanggal_kembali) 
-        VALUES (:id_pinjam, :id_buku, :buku_yang_dipinjam, :peminjam, :tanggal_pinjam, :tanggal_kembali)");
+        $query = $this->db->prepare("INSERT INTO loans (id_pinjam, id_buku, buku_yang_dipinjam, peminjam, tanggal_pinjam, tanggal_kembali) 
+            VALUES (:id_pinjam, :id_buku, :buku_yang_dipinjam, :peminjam, :tanggal_pinjam, :tanggal_kembali)");
+        
         $query->bindParam(':id_pinjam', $id_pinjam);
         $query->bindParam(':id_buku', $id_buku);
         $query->bindParam(':buku_yang_dipinjam', $buku);
         $query->bindParam(':peminjam', $peminjam);
         $query->bindParam(':tanggal_pinjam', $tanggal_pinjam);
         $query->bindParam(':tanggal_kembali', $tanggal_kembali);
+        
         return $query->execute();
     }
 
-    // Memperbarui data peminjam
     public function update($id_pinjam, $data) {
         $query = "UPDATE loans 
             SET buku_yang_dipinjam = :buku_yang_dipinjam, peminjam = :peminjam, 
@@ -52,19 +53,11 @@ class Loan {
         $stmt->bindParam(':tanggal_kembali', $data['tanggal_kembali']);
         return $stmt->execute();
     }
-    
 
-    // Menghapus data peminjam berdasarkan ID
     public function delete($id_pinjam) {
         $query = "DELETE FROM loans WHERE id_pinjam = :id_pinjam";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_pinjam', $id_pinjam);
         return $stmt->execute();
-
-        $queryBooks = "DELETE FROM books WHERE id_pinjam = :id_pinjam";
-        $stmtBooks = $this->db->prepare($queryBooks);
-        $stmtBooks->bindParam(':id_pinjam', $id_pinjam);
-        $stmtBooks->execute();
-
     }
-}  
+}

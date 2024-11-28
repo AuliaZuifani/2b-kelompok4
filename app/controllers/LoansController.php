@@ -12,7 +12,6 @@ class LoanController {
     public function index() {
         $loans = $this->LoanModel->getAllLoans();
         require_once '../app/views/loans/index.php';
-
     }
 
     public function create() {
@@ -28,16 +27,18 @@ class LoanController {
         $tanggal_pinjam = $_POST['tanggal_pinjam'];
         $tanggal_kembali = $_POST['tanggal_kembali'];
 
+        // Panggil model untuk menambahkan data
         $this->LoanModel->add($id_pinjam, $id_buku, $buku, $peminjam, $tanggal_pinjam, $tanggal_kembali);
+
+        // Redirect setelah data berhasil disimpan
         header('Location: /loans/index');
     }
-    // Menampilkan form edit
+
     public function edit($id_pinjam) {
-        $loan = $this->LoanModel->find($id_pinjam); // Assume find() gets user by ID
+        $loan = $this->LoanModel->find($id_pinjam);
         require_once '../app/views/loans/edit.php';
     }
 
-    // Memproses upate data
     public function update($id_pinjam) {
         $data = [
             'buku_yang_dipinjam' => $_POST['buku_yang_dipinjam'],
@@ -54,13 +55,12 @@ class LoanController {
         }
     }
 
-    // Memproses penghapusan data
     public function delete($id_pinjam) {
         $deleted = $this->LoanModel->delete($id_pinjam);
         if ($deleted) {
-            header("Location: /loans/index"); // Redirect to user list
+            header("Location: /loans/index"); // Redirect ke daftar peminjaman
         } else {
-            echo "Gagal Menghapus Data.";
+            echo "Gagal menghapus data.";
         }
     }
 }

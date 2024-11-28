@@ -1,9 +1,8 @@
-<!-- app/views/loans/create.php -->
 <?php require_once '../public/header.php'; ?>
 <?php require_once '../public/navbar.php'; ?>
 
 <div class="container mt-5">
-<h2 class="text-center mb-4">Tambah Data Peminjaman</h2>
+<h2 class="text-center mb-4">Tambah Data Peminjaman Buku</h2>
     <form action="/loans/store" method="POST">
         <table class="table table-bordered" style="max-width: 600px; margin: 0 auto;">
             <tr>
@@ -27,15 +26,15 @@
                 <td><input type="date" name="tanggal_kembali" id="tanggal_kembali"><br></td>
             </tr>
             <tr>
-                <td><label for="id_buku">ID Buku:</label></td>
+                <td><label for="id_buku">Pilih Buku:</label></td>
                 <td>
-                    <select name="id_buku" id="id_buku" required>
-                        <?php foreach ($books as $book): ?>
-                            <option value="<?php echo $book['id_buku']; ?>">
-                                <?php echo $book['id_buku']; ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+                <select name="id_buku" id="id_buku" required>
+                    <?php foreach ($books as $book): ?>
+                        <option value="<?= $book['id_buku']; ?>">
+                            <?= htmlspecialchars($book['judul']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
                 </td>
             </tr>
         </table>
