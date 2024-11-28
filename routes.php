@@ -1,19 +1,18 @@
 <?php
 // routes.php
 
-
 require_once 'app/controllers/UsersController.php';
-
+require_once 'app/controllers/HomeController.php';
 
 $Usercontroller = new UsersController();
-$url = $_SERVER['REQUEST_URI'];
-$requestMethod = $_SERVER['REQUEST_METHOD'];
-$Usercontroller = new UsersController();
+$Homecontroller = new HomeController();
 
 $url = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-if($url == '/users/index' || $url == '/') {
+if($url == '/home' || $url == '/') {
+    new HomeController();
+}elseif($url == '/users/index' && $requestMethod == 'GET') {
     $Usercontroller->index();
 } elseif ($url == '/users/create' && $requestMethod == 'GET') {
     $Usercontroller->create();
