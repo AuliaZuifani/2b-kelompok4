@@ -37,7 +37,7 @@
 
             <!-- Penerbit -->
             <tr>
-                <td><label for="id_penerbit">ID Penerbit:</label></td>
+                <td><label for="id_penerbit">Id Penerbit:</label></td>
                 <td>
                     <select name="id_penerbit" id="id_penerbit" class="form-control form-control-sm" required>
                         <?php foreach ($penerbit as $p): ?>
