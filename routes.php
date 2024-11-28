@@ -2,6 +2,7 @@
 // routes.php
 
 require_once 'app/controllers/BooksController.php';
+<<<<<<< HEAD
 require_once 'app/controllers/UsersController.php';
 require_once 'app/controllers/publiserController.php';
 require_once 'app/controllers/LoansController.php';
@@ -10,11 +11,22 @@ $bookcontroller = new BooksController();
 $Usercontroller = new UsersController();
 $publisercontroller = new PubliserController();
 $LoansController = new LoanController();
+=======
+require_once 'app/controllers/HomeController.php';
+//books controller
+$bookcontroller = new BooksController();
+$Homecontroller = new HomeController();
+
+>>>>>>> books
 
 $url = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-if ($url == '/books/index' || $url == '/') {
+
+if ($url == '/home' || $url == '/') {
+    new HomeController();
+
+}elseif ($url == '/books/index' || $url == '/') {
     $bookcontroller->index();
 } elseif ($url == '/books/create' && $requestMethod == 'GET') {
     $bookcontroller->create();
