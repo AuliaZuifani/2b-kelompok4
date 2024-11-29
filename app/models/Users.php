@@ -1,15 +1,15 @@
 <?php
 // app/models/User.php
-require_once '../config/database.php';
+require_once '../config/database.php';//Menghubungkan kedatabase
 
 class User {
     private $db;
 
     public function __construct() {
-        $this->db = (new Database())->connect();
+        $this->db = (new Database())->connect();//mengakses database yang diperlukan
     }
 
-    public function getAllUsers() {
+    public function getAllUsers() {//Mengambil 
         $query = $this->db->query("SELECT * FROM users");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -32,13 +32,13 @@ class User {
     }
 
     // Update user data by ID
-    public function update($id_user, $data) {
+    public function update($id_user, $user) {
         $query = "UPDATE users SET nomor_anggota = :nomor_anggota, nama = :nama, email = :email , password = :password WHERE id_user = :id_user";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':nomor_anggota', $data['nomor_anggota']);
-        $stmt->bindParam(':nama', $data['nama']);
-        $stmt->bindParam(':email', $data['email']);
-        $stmt->bindParam(':password', $data['password']);
+        $stmt->bindParam(':nomor_anggota', $user['nomor_anggota']);
+        $stmt->bindParam(':nama', $user['nama']);
+        $stmt->bindParam(':email', $user['email']);
+        $stmt->bindParam(':password', $user['password']);
         $stmt->bindParam(':id_user', $id_user);
         return $stmt->execute();
     }

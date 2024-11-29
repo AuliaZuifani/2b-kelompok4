@@ -19,7 +19,7 @@ class UsersController {
         require_once '../app/views/users/create.php';
     }
 
-    public function store() {
+    public function store() {//menyimpan data pengguna baru
         $nomor_anggota= $_POST['nomor_anggota'];
         $nama = $_POST['nama'];
         $email = $_POST['email'];
@@ -34,8 +34,8 @@ class UsersController {
     }
 
     // Process the update request
-    public function update($id_user, $data) {
-        $updated = $this->userModel->update($id_user, $data);
+    public function update($id_user, $user) {
+        $updated = $this->userModel->update($id_user, $user);
         if ($updated) {
             header("Location: /users/index"); // Redirect to user list
         } else {

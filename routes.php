@@ -11,7 +11,7 @@ $url = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 if($url == '/home' || $url == '/') {
-    new HomeController();
+    new HomeController();//rute untuk mengirimkan request yang mengarahkan ke Homecontroller untuk mengakses home
 }elseif($url == '/users/index' && $requestMethod == 'GET') {
     $Usercontroller->index();
 } elseif ($url == '/users/create' && $requestMethod == 'GET') {
