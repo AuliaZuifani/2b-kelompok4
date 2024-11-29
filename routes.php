@@ -2,26 +2,19 @@
 // routes.php
 
 require_once 'app/controllers/BooksController.php';
-<<<<<<< HEAD
 require_once 'app/controllers/UsersController.php';
 require_once 'app/controllers/publiserController.php';
 require_once 'app/controllers/LoansController.php';
+require_once 'app/controllers/HomeController.php';
 
 $bookcontroller = new BooksController();
 $Usercontroller = new UsersController();
 $publisercontroller = new PubliserController();
 $LoansController = new LoanController();
-=======
-require_once 'app/controllers/HomeController.php';
-//books controller
-$bookcontroller = new BooksController();
 $Homecontroller = new HomeController();
-
->>>>>>> books
 
 $url = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
-
 
 if ($url == '/home' || $url == '/') {
     new HomeController();
